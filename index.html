@@ -53,7 +53,6 @@
   </table>
 
   <button id="save-button">Save Spread</button>
-  <button id="shuffle-button">Shuffle Cards</button>
 
   <script>
     // Generate a random tarot card
@@ -68,9 +67,9 @@
     // Display a tarot card
     function displayCard(card, cardElement) {
       cardElement.innerHTML = `
-        <img src="https://example.com/tarot/cards/<span class="math-inline">\{card\}\.png" alt\="</span>{card}">
+        <img src="https://example.com/tarot/cards/${card}.png" alt="${card}">
         <h3 class="card-name">${card}</h3>
-        <p class="card-description">This card represents ${cardElement.dataset.description}</p>
+        <p class="card-description">${cardElement.dataset.description}</p>
       `;
     }
 
@@ -101,20 +100,6 @@
       }
     }
 
-    // Shuffle the tarot cards
-    function shuffleCards() {
-      const cardElements = document.querySelectorAll("#tarot-spread td");
-
-      for (let i = 0; i < cardElements.length; i++) {
-        const randomIndex = Math.floor(Math.random() * cardElements.length);
-
-        // Swap the card elements
-        const tempCardElement = cardElements[i];
-        cardElements[i] = cardElements[randomIndex];
-        cardElements[randomIndex] = tempCardElement;
-      }
-    }
-
     // Initialize the tarot spread
     document.addEventListener("DOMContentLoaded", function() {
       const cardElements = document.querySelectorAll("#tarot-spread td");
@@ -122,4 +107,16 @@
       for (let i = 0; i < cardElements.length; i++) {
         cardElements[i].dataset.description = generateRandomCard();
         cardElements[i].addEventListener("click", function() {
-          displayCard(this
+          displayCard(this.dataset.description, this);
+        });
+      }
+
+      // Restore the tarot spread from localStorage
+      restoreSpread();
+
+      // Add an event listener to the save button
+      document.querySelector("#save-button").addEventListener("click", saveSpread);
+    });
+  </script>
+</body>
+</html>
