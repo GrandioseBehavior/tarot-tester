@@ -284,28 +284,11 @@ var showBig = big => {
 }
     </script>
   </body>
-</html><h1>3-Card Tarot Spread Generator</h1>
-<h2>Coded by Haley Halcyon</h2>
+</html>
 
-<div id="intro" class="limW">
-  <p>Sharable version: <a href="https://japanyoshi.github.io/tidbit/tarot">https://2GD4.ME/tidbit/tarot</a>
-  <h3>How to use this tool</h3>
-  <p>
-    This tool will generate 3 tarot cards. But before you press the button,
-    <i>think about what you want this tool to divine about.</i> It could be
-    love, work, studies, or generally your life, or even just today.
-  </p>
-  <p>
-    To the three cards, you can assign the meanings of “past/present/future”;
-    “what you want/what the other party wants/where you are headed”, “the
-    conscious/the subconcious/the world”, or other groups of three. There aren’t
-    many rules at all in tarot reading; the cards simply serve as inspiration.
-  </p>
-  <h4>Read the above explanation before you start.</h4>
-</div>
 <div class="limW">
 <button type="button" onClick="genCards()">
-  Draw 3 tarot cards
+  Draw Cards
 </button>
   <input id="showBig" type="radio" name="big" value="1" onchange="showBig(true)"/><label for="showBig">Show large cards</label>
   <input id="showSmall" type="radio" name="big" value="0" onchange="showBig(false)" checked/><label for="showSmall">Fit cards in one row</label>
@@ -339,44 +322,3 @@ var showBig = big => {
     </div>
   </div>
 </div>
-<div id="desc" class="limW">
-  <h3>Technical explanation</h3>
-  <p>
-    Cards are drawn without replacement from the 22 cards of the Major Arcana,
-    which yields 22 &times; 21 &times; 20 = 9240 combinations. Each card can be
-    drawn in 2 orientations, which yields 2&sup3; = 8 combinations. Multiplied
-    together, that yields 73920 combinations.
-  </p>
-  <p>
-    This tool draws a random integer between 0 and 2<span class="invis">^</span
-    ><sup>17</sup>, between which Javascript can reliably generate
-    reasonably-uniform pseudorandom integers. If the result is greater than or
-    equal to 73920, the random draw is discarded and the random number is
-    generated again.
-  </p>
-  <p>
-    The first card is determined by dividing the result by 22, then the
-    orientation by dividing the result by 2. The second card uses 21, the number
-    of cards left in the deck by then. The third card uses 20, likewise. So
-    small changes change the first card, and large changes change the last card.
-  </p>
-  <p>
-    However, this method sometimes produces duplicates. To prevent that, any
-    draws that are equal to or larger than a previous draw must be incremented
-    by 1. The calculation of this is slightly abbreviated; if it sees that the
-    second card needs to be incremented, it checks if the last card needs to
-    also be incremented, in which case, it increments the last card by 2.
-  </p>
-  <p>
-    Tarot card images are from Wikimedia Commons.
-  </p>
-  <h3>Warning</h3>
-  <p>
-    <b
-      >As with all fortune-telling and superstitions, take this with a grain of
-      salt.</b>
-    Haley Halcyon <i>does not</i> recommend basing your life upon tarot readings
-    or other kinds of supernatural drivel.
-  </p>
-</div>
-<br />
