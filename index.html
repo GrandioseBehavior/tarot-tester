@@ -67,24 +67,30 @@
     // Display a tarot card
     function displayCard(card, cardElement) {
       cardElement.innerHTML = `
-        <img src="https://example.com/tarot/cards/${card}.png" alt="${card}">
+        <img src="https://example.com/tarot/cards/<span class="math-inline">\{card\}\.png" alt\="</span>{card}">
         <h3 class="card-name">${card}</h3>
-        <p class="card-description">This card represents ${cardElement.dataset.description}</p>
-      `;
-    }
-
-    // Save the tarot spread
-    function saveSpread() {
-      const cards = [];
-
-      document.querySelectorAll("#tarot-spread td").forEach(cardElement => {
-        cards.push(cardElement.dataset.description);
-      });
-
-      const spreadJSON = JSON.stringify(cards);
-
-      // Save the spreadJSON to localStorage
-      localStorage.setItem("tarotSpread", spreadJSON);
+        <p class="card-description">This card represents <span class="math-inline">\{cardElement\.dataset\.description\}</p\>
+\`;
+\}
+// Save the tarot spread
+function saveSpread\(\) \{
+const cards \= \[\];
+document\.querySelectorAll\("\#tarot\-spread td"\)\.forEach\(cardElement \=\> \{
+cards\.push\(cardElement\.dataset\.description\);
+\}\);
+const spreadJSON \= JSON\.stringify\(cards\);
+// Save the spreadJSON to localStorage
+localStorage\.setItem\("tarotSpread", spreadJSON\);
+\}
+// Restore the tarot spread from localStorage, if it exists
+function restoreSpread\(\) \{
+const savedSpread \= localStorage\.getItem\("tarotSpread"\);
+if \(savedSpread\) \{
+const cards \= JSON\.parse\(savedSpread\);
+for \(let i \= 0; i < cards\.length; i\+\+\) \{
+displayCard\(cards\[i\], document\.querySelector\(\`\#tarot\-spread td\:nth\-child\(</span>{i + 1})`));
+        }
+      }
     }
 
     // Initialize the tarot spread
@@ -98,20 +104,9 @@
         });
       }
 
-      // Restore the tarot spread from localStorage, if it exists
-      const savedSpread = localStorage.getItem("tarotSpread");
-
-      if (savedSpread) {
-        const cards = JSON.parse(savedSpread);
-
-        for (let i = 0; i < cards.length; i++) {
-          displayCard(cards[i], cardElements[i]);
-        }
-      }
-
       // Add an event listener to the save button
       document.querySelector("#save-button").addEventListener("click", saveSpread);
+
+      // Restore the tarot spread from localStorage
+      restoreSpread();
     });
-  </script>
-</body>
-</html>
