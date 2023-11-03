@@ -2,15 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Three Card Tarot Spread</title>
+  <title>Interactive Three Card Tarot Spread</title>
   <style>
     table {
       width: 100%;
       margin: 0 auto;
+      border-collapse: collapse;
     }
 
     td {
       text-align: center;
+      padding: 10px;
+      border: 1px solid #ccc;
     }
 
     .card {
@@ -28,10 +31,18 @@
     .card-description {
       font-size: 16px;
     }
+
+    .save-button {
+      margin-top: 20px;
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
-  <h1>Three Card Tarot Spread</h1>
+  <h1>Interactive Three Card Tarot Spread</h1>
 
   <table id="tarot-spread">
     <tr>
@@ -40,6 +51,8 @@
       <td id="card-3"></td>
     </tr>
   </table>
+
+  <button id="save-button">Save Spread</button>
 
   <script>
     // Generate a random tarot card
@@ -60,6 +73,20 @@
       `;
     }
 
+    // Save the tarot spread
+    function saveSpread() {
+      const cards = [];
+
+      document.querySelectorAll("#tarot-spread td").forEach(cardElement => {
+        cards.push(cardElement.dataset.description);
+      });
+
+      const spreadJSON = JSON.stringify(cards);
+
+      // Save the spreadJSON to localStorage
+      localStorage.setItem("tarotSpread", spreadJSON);
+    }
+
     // Initialize the tarot spread
     document.addEventListener("DOMContentLoaded", function() {
       const cardElements = document.querySelectorAll("#tarot-spread td");
@@ -70,6 +97,20 @@
           displayCard(this.dataset.description, this);
         });
       }
+
+      // Restore the tarot spread from localStorage, if it exists
+      const savedSpread = localStorage.getItem("tarotSpread");
+
+      if (savedSpread) {
+        const cards = JSON.parse(savedSpread);
+
+        for (let i = 0; i < cards.length; i++) {
+          displayCard(cards[i], cardElements[i]);
+        }
+      }
+
+      // Add an event listener to the save button
+      document.querySelector("#save-button").addEventListener("click", saveSpread);
     });
   </script>
 </body>
