@@ -2,111 +2,37 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Interactive Three Card Tarot Spread</title>
-  <style>
-    table {
-      width: 100%;
-      margin: 0 auto;
-      border-collapse: collapse;
-    }
-
-    td {
-      text-align: center;
-      padding: 10px;
-      border: 1px solid #ccc;
-    }
-
-    .card {
-      cursor: pointer;
-    }
-
-    .card:hover {
-      opacity: 0.7;
-    }
-
-    .card-name {
-      font-size: 20px;
-    }
-
-    .card-description {
-      font-size: 16px;
-    }
-
-    .save-button {
-      margin-top: 20px;
-      background-color: #000;
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-    }
-  </style>
+  <title>Three Card Tarot Spread</title>
 </head>
 <body>
-  <h1>Interactive Three Card Tarot Spread</h1>
+  <h1>Three Card Tarot Spread</h1>
 
-  <table id="tarot-spread">
+  <table>
     <tr>
-      <td id="card-1"></td>
-      <td id="card-2"></td>
-      <td id="card-3"></td>
+      <td>
+        <img src="https://example.com/tarot/cards/the-fool.png" alt="The Fool">
+      </td>
+      <td>
+        <img src="https://example.com/tarot/cards/the-magician.png" alt="The Magician">
+      </td>
+      <td>
+        <img src="https://example.com/tarot/cards/the-high-priestess.png" alt="The High Priestess">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3 class="card-name">The Fool</h3>
+        <p class="card-description">This card represents new beginnings, fresh starts, and new opportunities. It can also represent innocence, naivety, and taking risks.</p>
+      </td>
+      <td>
+        <h3 class="card-name">The Magician</h3>
+        <p class="card-description">This card represents creativity, manifestation, and personal power. It can also represent new skills, new knowledge, and new projects.</p>
+      </td>
+      <td>
+        <h3 class="card-name">The High Priestess</h3>
+        <p class="card-description">This card represents intuition, subconscious wisdom, and the hidden mysteries of the universe. It can also represent secrets, silence, and introspection.</p>
+      </td>
     </tr>
   </table>
-
-  <button id="save-button">Save Spread</button>
-
-  <script>
-    // Generate a random tarot card
-    function generateRandomCard() {
-      const cards = ["The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit", "The Wheel of Fortune", "Justice", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgment", "The World"];
-
-      const randomIndex = Math.floor(Math.random() * cards.length);
-
-      return cards[randomIndex];
-    }
-
-    // Display a tarot card
-    function displayCard(card, cardElement) {
-      cardElement.innerHTML = `
-        <img src="https://example.com/tarot/cards/<span class="math-inline">\{card\}\.png" alt\="</span>{card}">
-        <h3 class="card-name">${card}</h3>
-        <p class="card-description">This card represents <span class="math-inline">\{cardElement\.dataset\.description\}</p\>
-\`;
-\}
-// Save the tarot spread
-function saveSpread\(\) \{
-const cards \= \[\];
-document\.querySelectorAll\("\#tarot\-spread td"\)\.forEach\(cardElement \=\> \{
-cards\.push\(cardElement\.dataset\.description\);
-\}\);
-const spreadJSON \= JSON\.stringify\(cards\);
-// Save the spreadJSON to localStorage
-localStorage\.setItem\("tarotSpread", spreadJSON\);
-\}
-// Restore the tarot spread from localStorage, if it exists
-function restoreSpread\(\) \{
-const savedSpread \= localStorage\.getItem\("tarotSpread"\);
-if \(savedSpread\) \{
-const cards \= JSON\.parse\(savedSpread\);
-for \(let i \= 0; i < cards\.length; i\+\+\) \{
-displayCard\(cards\[i\], document\.querySelector\(\`\#tarot\-spread td\:nth\-child\(</span>{i + 1})`));
-        }
-      }
-    }
-
-    // Initialize the tarot spread
-    document.addEventListener("DOMContentLoaded", function() {
-      const cardElements = document.querySelectorAll("#tarot-spread td");
-
-      for (let i = 0; i < cardElements.length; i++) {
-        cardElements[i].dataset.description = generateRandomCard();
-        cardElements[i].addEventListener("click", function() {
-          displayCard(this.dataset.description, this);
-        });
-      }
-
-      // Add an event listener to the save button
-      document.querySelector("#save-button").addEventListener("click", saveSpread);
-
-      // Restore the tarot spread from localStorage
-      restoreSpread();
-    });
+</body>
+</html>
