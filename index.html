@@ -11,24 +11,34 @@ html {
 }
 
 body {
-  background: #cabc7c;
+  background: #fffd91;
   color: black;
   font-family: Jura, sans-serif;
   text-align: center;
+  font-size: 12px;
 }
 
 a {
-  color: #74AFD1;
+  color: #CF3824;
+  text-decoration: none;
 }
 
 a:visited {
-  color: #74AFD1;
+  color: #CF3824;
+  text-decoration: none;
 }
 
 .limW {
   display: block;
   max-width: 640px;
   margin: 0 auto;
+
+}
+.limH {
+  display: block;
+  max-width: 100px;
+  margin: 0 auto;
+
 
 }
 
@@ -48,9 +58,11 @@ h1 {
 }
 
 h2 {
-  margin-top: 0.5rem;
+  margin-top: 0.0;
+  padding-bottom: 1;
   font-family: Jura, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 200;
   text-align: center;
 }
 
@@ -67,18 +79,19 @@ button {
   width: calc(100% - 1.5rem);
   font-family: Jura, sans-serif;
   font-size: 1rem;
+  font-weight: 900;
   background: inherit;
   color: inherit;
   border: none;
-  margin: 1rem 0.5rem 2rem;
+  margin: .5rem 0.5rem .5rem;
   padding: 0.25rem;
-  outline: 0.125rem solid #D54D3A;
-  background: #e48376;
+  outline: 3px solid #2289c5;
+  background: #73ABCC;
 }
 
 button:active {
-  outline: 2px solid #D54D3A;
-  background: #e48376;
+  outline: 3px solid #2289c5;
+  background: #73ABCC;
 }
 label {
   display: block;
@@ -116,7 +129,7 @@ label:active {
   font-size: 1rem;
   display: inline-block;
   width: 280px;
-  background: #888F65;
+  background: #8c9753;
   border: 1px solid rgba(255,255,255,0.5);
   margin: 2px;
   padding-bottom: 1.5rem;
@@ -173,7 +186,7 @@ input[type=radio]:not(:checked) + label {
   margin-bottom: 3rem;
 }</style>
     <script>
-            const cardPre = "https://upload.wikimedia.org/wikipedia/en/";
+            const cardPre = "https://raw.githubusercontent.com/GrandioseBehavior/tarot-tester/main/";
 const cardImg = [
   "00-fool.jpg",
   "01-magician.jpg",
@@ -291,10 +304,10 @@ var showBig = big => {
 
 <h1> Fortune Teller </h1>
 
-  <h2>Past, Present, Future</h2>
+  <h2>Past | Present | Future</h2>
 
 
-  <div class="limW">
+  <div class="limH">
 <button type="button" onClick="genCards()">
  DRAW
 </button>
@@ -331,5 +344,6 @@ var showBig = big => {
 </div>
 
 <br>
-(This is only intended as a game. Please do not take your reading as a indefinite representation of your fortune.)<br>
-  Credit: <A href="https://c0ven.gumroad.com">C0VEN</A>
+<i> This is only intended as a game. Please do not take your reading as a indefinite representation of your fortune.</i><br>
+ <br> <b>Credit: <A href="https://c0ven.gumroad.com">C0VEN</A>
+</b>
