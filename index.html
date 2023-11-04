@@ -14,6 +14,7 @@ body {
   background: black;
   color: white;
   font-family: Jura, sans-serif;
+  text-align: center;
 }
 
 a {
@@ -38,23 +39,19 @@ a:visited {
   padding: 0.5rem;
 }
 
-}
-
-h1, h2 {
-  text-align: center;
-}
 
 h1 {
   margin-bottom: 0;
   font-size: 50px;
   font-family: UnifrakturMaguntia, cursive;
-
+  text-align: center;
 }
 
 h2 {
   margin-top: 0.5rem;
   font-family: Jura, sans-serif;
-  font-size: 35px;
+  font-size: 25px;
+  text-align: center;
 }
 
 #result {
@@ -68,6 +65,7 @@ p {
 button {
   display: block;
   width: calc(100% - 1.5rem);
+  font-family: Jura, sans-serif;
   font-size: 1rem;
   background: inherit;
   color: inherit;
@@ -288,16 +286,20 @@ var showBig = big => {
     </script>
   </body>
 </html>
-<h1> Fortune Teller </h1><Br>
-  <h2>Past, Present, Future</h2><br>
-  (This is only intended as a game, please do not take your reading as a definite representation of your fortune. )
+
+
+
+<h1> Fortune Teller </h1>
+
+  <h2>Past, Present, Future</h2>
+
+
 <div class="limW">
 <button type="button" onClick="genCards()">
   Draw Cards
 </button>
-  <input id="showBig" type="radio" name="big" value="1" onchange="showBig(true)"/><label for="showBig">Show large cards</label>
-  <input id="showSmall" type="radio" name="big" value="0" onchange="showBig(false)" checked/><label for="showSmall">Fit cards in one row</label>
-  </div>
+
+</div>
 <div id="result" class="limW">
   <h3 id="outcome"></h3>
   <div id="cards">
@@ -327,3 +329,6 @@ var showBig = big => {
     </div>
   </div>
 </div>
+
+
+(This is only intended as a game, please do not take your reading as a definite representation of your fortune. )
