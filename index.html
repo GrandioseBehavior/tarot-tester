@@ -110,6 +110,7 @@ button:active {
 .card {
   font-size: 1rem;
   display: inline-block;
+  
   width: 280px;
   background: #8c9753;
   border: 1px solid rgba(255,255,255,0.5);
@@ -128,20 +129,28 @@ button:active {
   width: 100%;
   padding-bottom: 175%;
   position: relative;
+  object-fit: contain;
 }
 
 .cardImg {
   position: absolute;
+   height: 553px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-size: contain;
   background-image: url(https://raw.githubusercontent.com/GrandioseBehavior/tarot-tester/main/CT1.png);
+    background-repeat: no-repeat;
+
 }
 
 .cardImg.reverse {
+   position: absolute;
   transform: rotate(-180deg);
+   height:100%;
+   object-fit:contain;
+   background-size: contain;
 }
 
 .cardName {
